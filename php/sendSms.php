@@ -41,9 +41,9 @@
 
  		//Close the curl connection request (destroy it)
 		curl_close($ch);		 
+
+		//Print the response or use conditional operater to perfrom certain task when we need only
 		print "Response = ".print_r($http_result);
-
-
 	}
 	
 
