@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Exotel</servlet-name>
+        <servlet-class>services.Exotel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IncomingCallResponse</servlet-name>
+        <servlet-class>services.IncomingCallResponse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SendSMS</servlet-name>
+        <servlet-class>services.SendSMS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Exotel</servlet-name>
+        <url-pattern>/addExotel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IncomingCallResponse</servlet-name>
+        <url-pattern>/IncomingCallResponse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendSMS</servlet-name>
+        <url-pattern>/SendSMS</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
