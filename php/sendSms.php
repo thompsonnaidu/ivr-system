@@ -35,6 +35,10 @@
 		//Execute the curl request
 		$http_result = curl_exec($ch);
 
+		//Get the details of request		
+		$error = curl_error($ch);
+		$http_code = curl_getinfo($ch ,CURLINFO_HTTP_CODE);
+
 	}
 	
 
