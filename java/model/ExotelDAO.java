@@ -55,5 +55,17 @@ public class ExotelDAO {
             System.out.println(msg);
         return msg;
      }
+
+
+     //incoming Call Handling
+     public boolean insertCallRecord(Map data){
+         try {
+                
+            } 
+            catch (Exception e) {
+               
+            }
+         return false;
+     }
     
 }
