@@ -16,8 +16,12 @@
 		);
 
 		//Replace your exotel credentials provided by exotel
-		$exotel_sid = "xxxxx"; // Your Exotel SID
-		$exotel_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token
+		$exotel_sid = "xxxxx"; // Your Exotel SID say 97946
+		$exotel_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token say aksdsa5fsa66saf
+
+		//Sample Request url  looks like https://97946:aksdsa5fsa66saf@twilix.exotel.in/v1/Accounts/97946/Sms/send
+		$url = "https://".$exotel_sid.":".$exotel_token."@twilix.exotel.in/v1/Accounts/".$exotel_sid."/Sms/send";
+		
 	}
 	
 
