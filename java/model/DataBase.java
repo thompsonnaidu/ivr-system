@@ -5,6 +5,9 @@
  */
 package model;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
 /**
  *
  * @author Franky Naidu
@@ -14,7 +17,25 @@ public class DataBase {
     /**
      * @param args the command line arguments
      */
-   
+    final public static String HOST_URL ="jdbc:mysql://localhost:3306/exotel";
+    final public static String USERNAME="root";;
+    final public static String PASSWORD="";
+    
+   public static Connection getConnection(){
+        Connection con = null;
+        
+        try {
+            //Register the class name
+            Class.forName("com.mysql.jdbc.Driver");
+            //Get the connection to database
+            con = DriverManager.getConnection(HOST_URL,USERNAME,PASSWORD);
+            //Return the connection object
+            return con;
+        } catch (Exception e) {
+            return con;
+            
+        }
+    }
     
     
 }
