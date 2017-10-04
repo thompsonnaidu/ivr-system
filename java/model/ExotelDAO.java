@@ -39,7 +39,11 @@ public class ExotelDAO {
                     //Query Fired Successfully
                     msg = "Hi "+(String)data.get("sender")+",Thank you for registering; Your account has been activated";
                 }
+                else{
+                    msg = "Sorry "+(String)data.get("sender")+",Your request is not accepted";
                 
+                }  
+
                  
             } 
             catch (Exception e) {
