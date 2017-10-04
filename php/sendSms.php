@@ -14,6 +14,10 @@
 		    'To'    => $To,
 		    'Body'  => $msg,
 		);
+
+		//Replace your exotel credentials provided by exotel
+		$exotel_sid = "xxxxx"; // Your Exotel SID
+		$exotel_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token
 	}
 	
 
