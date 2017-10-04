@@ -33,6 +33,8 @@ public class Exotel extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+       Map<String,Object> data = new HashMap();
+            ExotelDAO exotel = new ExotelDAO();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
                
