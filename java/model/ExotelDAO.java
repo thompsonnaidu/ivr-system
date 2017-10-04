@@ -62,9 +62,18 @@ public class ExotelDAO {
      //incoming Call Handling
      public boolean insertCallRecord(Map data){
          try {
+
                 PreparedStatement ps = con.prepareStatement(INSERT_INCOMING_CALL);
                 ps.setString(1,(String)data.get("CallSid"));
                 ps.setString(2,(String)data.get("From"));
+                if (ps.executeUpdate() >0 ){
+//                    msg = "Hi "+(String)data.get("sender")+",Thank you for registering; Your account has been activated";
+                    return true;
+                }
+                else{
+//                    msg = "Sorry "+(String)data.get("sender")+",Your request is not accepted";
+                    return false;
+                } 
             } 
             catch (Exception e) {
                
