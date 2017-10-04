@@ -46,6 +46,10 @@ public class Exotel extends HttpServlet {
                 data.put("date", request.getParameter("Date"));
                 data.put("body", request.getParameter("Body"));
                 String result = exotel.insertRecord(data);
+                response.setStatus(response.SC_OK);
+                response.setHeader("Content-Type", "text/plain");
+                response.setHeader("Content-Length", ""+result.length());
+                out.print(""+result);
                
             }
             catch(Exception e){
