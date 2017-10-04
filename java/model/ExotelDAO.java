@@ -78,5 +78,9 @@ public class ExotelDAO {
             }
          return false;
      }
+
+       public String sendSms(Map data){
+        
+     } 
     
 }
