@@ -37,6 +37,15 @@ public class Exotel extends HttpServlet {
             ExotelDAO exotel = new ExotelDAO();
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            if(request.getMethod().equals("HEAD")){
+                   return;
+               }
+                data.put("SmsSid", request.getParameter("SmsSid"));
+                data.put("sender", request.getParameter("From"));
+                data.put("receiver", request.getParameter("To"));
+                data.put("date", request.getParameter("Date"));
+                data.put("body", request.getParameter("Body"));
+                String result = exotel.insertRecord(data);
                
             }
             catch(Exception e){
