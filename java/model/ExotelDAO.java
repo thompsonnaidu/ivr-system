@@ -106,7 +106,21 @@ public class ExotelDAO {
             conn.setRequestProperty( "charset", "utf-8");
             conn.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
             conn.setUseCaches( false );
-            
+            //Write the post data parameters
+            try( DataOutputStream wr = new DataOutputStream( conn.getOutputStream())) {
+               wr.write( postData );
+            }
+
+            //read the output 
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuffer result = new StringBuffer();
+            String line;
+            while((line=br.readLine())!= null){
+                result.append(line);    
+            }
+            br.close();
+           return ""+result;
+
            return "";
          }
          catch(Exception e){
