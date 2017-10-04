@@ -34,6 +34,12 @@ public class ExotelDAO {
                 ps.setString(3,(String)data.get("receiver"));
                 ps.setString(4,(String)data.get("date"));
                 ps.setString(5,(String)data.get("body"));
+                //Exceute the query 
+                if (ps.executeUpdate() >0 ){
+                    //Query Fired Successfully
+                    msg = "Hi "+(String)data.get("sender")+",Thank you for registering; Your account has been activated";
+                }
+                
                  
             } 
             catch (Exception e) {
