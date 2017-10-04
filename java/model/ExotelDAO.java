@@ -80,7 +80,13 @@ public class ExotelDAO {
      }
 
        public String sendSms(Map data){
-        
+        try{
+            
+           return "";
+         }
+         catch(Exception e){
+             return "Exception "+e;
+         }
      } 
     
 }
