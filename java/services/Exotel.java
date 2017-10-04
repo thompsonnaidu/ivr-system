@@ -40,6 +40,8 @@ public class Exotel extends HttpServlet {
             if(request.getMethod().equals("HEAD")){
                    return;
                }
+               //Fetching the GET params
+//Request url:- http://localhost:8000/incomingCallResponse.php?CallSid=9874562&From=78945620
                 data.put("SmsSid", request.getParameter("SmsSid"));
                 data.put("sender", request.getParameter("From"));
                 data.put("receiver", request.getParameter("To"));
