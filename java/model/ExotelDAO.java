@@ -50,6 +50,7 @@ public class ExotelDAO {
                 msg = "Sorry "+(String)data.get("sender")+",Your request is not accepted";
                 System.out.println(""+e.getMessage());
             }
+            System.out.println(msg);
         return msg;
      }
     
