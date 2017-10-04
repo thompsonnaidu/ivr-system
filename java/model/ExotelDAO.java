@@ -20,5 +20,17 @@ public class ExotelDAO {
         //set the connection Object
          con = DataBase.getConnection();
      }
+
+    //incoming Sms Handling
+     public String insertRecord(Map data){         
+                String msg="";
+         try {
+                
+                 
+            } 
+            catch (Exception e) {
+            }
+        return msg;
+     }
     
 }
