@@ -44,6 +44,8 @@
 
 		//Print the response or use conditional operater to perfrom certain task when we need only
 		print "Response = ".print_r($http_result);
+
+		//end of the function
 	}
 	
 
