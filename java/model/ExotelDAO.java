@@ -20,6 +20,9 @@ public class ExotelDAO {
      private final static String INSERT_EXOTEL = "INSERT INTO incomingsms(`smsSid`, `sender`, `receiver`, `date`, `body`) VALUES(?,?,?,?,?) ";
      private final static String GET_ALL_EXOTEl = "select * from incomingsms";
      private final static String INSERT_INCOMING_CALL = "INSERT INTO `incomingCall`(`callid`, `caller`) VALUES (?,?)";
+     private final String EXOTEL_SID = "xxxxx"; // Your Exotel SID
+     private final String EXOTEL_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token
+
      // Constructor
      public ExotelDAO(){
         //set the connection Object
