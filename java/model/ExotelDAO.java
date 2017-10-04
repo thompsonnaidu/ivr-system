@@ -5,11 +5,20 @@
  */
 package model;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Franky Naidu
  */
 public class ExotelDAO {
     
+     private Connection con;
+
+     // Constructor
+     public ExotelDAO(){
+        //set the connection Object
+         con = DataBase.getConnection();
+     }
     
 }
