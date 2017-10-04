@@ -38,9 +38,17 @@ public class SendSMS extends HttpServlet {
             
             Map<String,Object> data = new HashMap();
             ExotelDAO exotel = new ExotelDAO();
-            data.put("From", request.getParameter("From"));
-            data.put("To", request.getParameterValues("To"));
-            data.put("Body", request.getParameter("Body"));
+//            data.put("From", request.getParameter("From"));
+//            data.put("To", request.getParameterValues("To"));
+//            data.put("Body", request.getParameter("Body"));
+            
+            String to[] = {"9511763048"};
+            String from="";
+            String msg="Hi Franky, your number 951764523 is now turned on.";
+            data.put("From", from);
+            data.put("To", to);
+            data.put("Body", msg);
+            
             String result = exotel.sendSms(data);
             System.out.println(result);
         }

@@ -42,14 +42,10 @@ public class IncomingCallResponse extends HttpServlet {
            }
            data.put("CallSid", request.getParameter("CallSid"));
            data.put("From", request.getParameter("From"));
-           if(exotel.insertCallRecord(data)){
-               response.setStatus(response.SC_OK);
-               out.println("Thank You for Registering");
-           }
-           else{
-               response.setStatus(response.SC_NOT_IMPLEMENTED);
-               out.println("Try Later....");
-           }
+           data.put("digits", request.getParameter("digits"));
+           response.setStatus(response.SC_OK);
+           out.println(exotel.insertCallRecord(data));
+           
            
         }
     }

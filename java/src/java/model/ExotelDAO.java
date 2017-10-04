@@ -13,6 +13,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Map;
 
 /**
@@ -22,10 +23,11 @@ import java.util.Map;
 public class ExotelDAO {
      private Connection con;
      private final String EXOTEL_SID = "xxxxx"; // Your Exotel SID
-     private final String EXOTEL_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token
+     private final String EXOTEL_TOKEN = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token
      private final static String INSERT_EXOTEL = "INSERT INTO incomingsms(`smsSid`, `sender`, `receiver`, `date`, `body`) VALUES(?,?,?,?,?) ";
      private final static String GET_ALL_EXOTEl = "select * from incomingsms";
-     private final static String INSERT_INCOMING_CALL = "INSERT INTO `incomingCall`(`callid`, `caller`) VALUES (?,?)";
+     private final static String INSERT_INCOMING_CALL = "INSERT INTO `incomingCall`(`callid`, `caller`,`registerphone`) VALUES (?,?,?)";
+     private final static String GET_INCOMING_CALL = "Select * from `incomingCall`  where `registerphone` like ?";
      
      public ExotelDAO(){
          con = DataBase.getConnection();
@@ -55,27 +57,37 @@ public class ExotelDAO {
          System.out.println(""+msg);
         return msg;
      }
-     public boolean insertCallRecord(Map data){
+     public String insertCallRecord(Map data){
                 String msg="";
          try {
-                PreparedStatement ps = con.prepareStatement(INSERT_INCOMING_CALL);
-                ps.setString(1,(String)data.get("CallSid"));
-                ps.setString(2,(String)data.get("From"));
-                if (ps.executeUpdate() >0 ){
-//                    msg = "Hi "+(String)data.get("sender")+",Thank you for registering; Your account has been activated";
-                    return true;
+             
+                PreparedStatement ps = con.prepareStatement(GET_INCOMING_CALL);
+                ps.setString(1, (String)data.get("digits"));
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                     msg = "{\"select\":\"registered\"}";
+                    return msg;
                 }
                 else{
-//                    msg = "Sorry "+(String)data.get("sender")+",Your request is not accepted";
-                    return false;
-                }  
+                        ps = con.prepareStatement(INSERT_INCOMING_CALL);
+                        ps.setString(1,(String)data.get("CallSid"));
+                        ps.setString(2,(String)data.get("From"));
+                        ps.setString(3, (String)data.get("digits"));
+                        if (ps.executeUpdate() >0 ){
+                            msg = "{\"select\":\"success\"}";
+                            return msg;
+                        }
+                        else{
+                            msg = "{\"select\":\"fail\"}";
+                            return msg;
+                        }
+                }
+                 
             } 
             catch (Exception e) {
-                //msg = "Sorry "+(String)data.get("sender")+",Your request is not accepted";
-                
                 System.out.println(""+e.getMessage());
             }
-         return false;
+         return msg;
      }
      
      public String sendSms(Map data){
@@ -87,9 +99,9 @@ public class ExotelDAO {
                  to +="To[]="+todata+"&"; 
              }
             String msg = "Body="+data.get("Body");
-           // String link = "https://"+EXOTEL_SID+":"+EXOTEL_TOKEN+"@twilix.exotel.in/v1/Accounts/"+EXOTEL_SID+"/Sms/send";
-            String link="http://localhost/tawk/test.php";
-            
+           String link = "https://"+EXOTEL_SID+":"+EXOTEL_TOKEN+"@twilix.exotel.in/v1/Accounts/"+EXOTEL_SID+"/Sms/send";
+            //String link="http://localhost/tawk/test.php";
+             System.out.println(""+link);
             URL url = new URL(link);            
             String urlParameters = from+to+msg;
             byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );

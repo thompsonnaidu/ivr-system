@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'HEAD') {
 //Request url:- http://localhost:8000/incomingCallResponse.php?CallSid=9874562&From=78945620
 $CallSid = $_GET["CallSid"];
 $From = $_GET["From"];
+$digit = trim($_GET["digits"],'"');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,15 +25,25 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO `incomingCall`(`callid`, `caller`) VALUES ('".$CallSid."','".$From."')";
+$sql = "select * from `incomingCall` where `registerphone` like '".$digit."' ";
+$result = $conn->query($sql);
 
-if ($conn->query($sql) === TRUE) {
-	header("HTTP/1.1 200 OK");
-    echo "Thank You for Registering";
-} else {
-	header("HTTP/1.1 501 NOTOK");
-    echo "Some error occured while registering"; 
+if ($result->num_rows > 0) {
+    // output data of each row
+    header("HTTP/1.1 200 OK");
+	echo '{"select":"registered"}';
 }
+ else {
+ 	$sql = "INSERT INTO `incomingCall`(`callid`, `caller`,`registerphone`) VALUES ('".$CallSid."','".$From."','".$digit."')";
+    if ($conn->query($sql) === TRUE) {
+		header("HTTP/1.1 200 OK");
+	    echo '{"select":"success"}';
+	} else {
+		header("HTTP/1.1 501 NOTOK");
+	    echo '{"select":"fail"}';
+	}
+}
+
 
 $conn->close();
 ?>

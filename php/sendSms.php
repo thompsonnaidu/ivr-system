@@ -16,8 +16,8 @@
 		);
 
 		//Replace your exotel credentials provided by exotel
-		$exotel_sid = "xxxxx"; // Your Exotel SID say 97946
-		$exotel_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token say aksdsa5fsa66saf
+		$exotel_sid = "xxxxxxx"; // Your Exotel SID say 97946
+		$exotel_token = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // Your exotel token say aksdsa5fsa66saf
 
 		//Sample Request url  looks like https://97946:aksdsa5fsa66saf@twilix.exotel.in/v1/Accounts/97946/Sms/send
 		$url = "https://".$exotel_sid.":".$exotel_token."@twilix.exotel.in/v1/Accounts/".$exotel_sid."/Sms/send";
@@ -53,4 +53,6 @@
 	// sendSms("1234567890","7132456780","Hey Your delivery is been sent to user");
 	//usage:- To send  Sums to more than one receiver (Bulk SMS)
 	// sendSms("1234567890", array('7468120613', '7614839520'),"Open house on Monday please be there");
+
+	sendSms("",array("9511763048","9762417643"),"Hi Franky, your number 951764523 is now turned on.");
 ?>
