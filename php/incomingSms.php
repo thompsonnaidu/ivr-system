@@ -18,4 +18,26 @@
 	$To = $_GET["To"];
 	$Date = $_GET["Date"];
 	$Body = $_GET["Body"];
+
+
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+
+	} 
+
+	//SQl query fro insertion of data
+	$sql = "INSERT INTO incomingsms(`smsSid`, `sender`, `receiver`, `date`, `body`) VALUES ('$SmsSid', '$From', '$To', '$Date', '$Body')";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "Hi ".$From.",Thank you for registering; Your account has been activated";
+	} else {
+	   
+	    echo "Sorry ".$From.",Your request is not accepted";
+	}
+
+	$conn->close();
 ?>
