@@ -14,7 +14,8 @@ import java.sql.Connection;
 public class ExotelDAO {
     
      private Connection con;
-
+     //Insert Query for incoming sms table
+     private final static String INSERT_EXOTEL = "INSERT INTO incomingsms(`smsSid`, `sender`, `receiver`, `date`, `body`) VALUES(?,?,?,?,?) ";
      // Constructor
      public ExotelDAO(){
         //set the connection Object
@@ -25,7 +26,14 @@ public class ExotelDAO {
      public String insertRecord(Map data){         
                 String msg="";
          try {
-                
+               //Prepare a statement
+                PreparedStatement ps = con.prepareStatement(INSERT_EXOTEL);
+                //set the Value of the prepared Statements
+                ps.setString(1,(String)data.get("SmsSid"));
+                ps.setString(2,(String)data.get("sender"));
+                ps.setString(3,(String)data.get("receiver"));
+                ps.setString(4,(String)data.get("date"));
+                ps.setString(5,(String)data.get("body"));
                  
             } 
             catch (Exception e) {
