@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'HEAD') {
 	exit();
 }	
 //Fetching the GET params
-//Request url:- http://localhost:8000/incomingCallResponse?CallSid=9874562&From=78945620
+//Request url:- http://localhost:8000/incomingCallResponse.php?CallSid=9874562&From=78945620
 $CallSid = $_GET["CallSid"];
 $From = $_GET["From"];
 
