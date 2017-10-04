@@ -18,6 +18,8 @@ public class ExotelDAO {
      private Connection con;
      //Insert Query for incoming sms table
      private final static String INSERT_EXOTEL = "INSERT INTO incomingsms(`smsSid`, `sender`, `receiver`, `date`, `body`) VALUES(?,?,?,?,?) ";
+     private final static String GET_ALL_EXOTEl = "select * from incomingsms";
+     private final static String INSERT_INCOMING_CALL = "INSERT INTO `incomingCall`(`callid`, `caller`) VALUES (?,?)";
      // Constructor
      public ExotelDAO(){
         //set the connection Object
@@ -60,7 +62,9 @@ public class ExotelDAO {
      //incoming Call Handling
      public boolean insertCallRecord(Map data){
          try {
-                
+                PreparedStatement ps = con.prepareStatement(INSERT_INCOMING_CALL);
+                ps.setString(1,(String)data.get("CallSid"));
+                ps.setString(2,(String)data.get("From"));
             } 
             catch (Exception e) {
                
