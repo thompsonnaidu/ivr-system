@@ -47,6 +47,8 @@ public class ExotelDAO {
                  
             } 
             catch (Exception e) {
+                msg = "Sorry "+(String)data.get("sender")+",Your request is not accepted";
+                System.out.println(""+e.getMessage());
             }
         return msg;
      }
