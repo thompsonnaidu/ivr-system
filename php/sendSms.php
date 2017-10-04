@@ -39,6 +39,11 @@
 		$error = curl_error($ch);
 		$http_code = curl_getinfo($ch ,CURLINFO_HTTP_CODE);
 
+ 		//Close the curl connection request (destroy it)
+		curl_close($ch);		 
+		print "Response = ".print_r($http_result);
+
+
 	}
 	
 
