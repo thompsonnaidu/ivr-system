@@ -32,6 +32,9 @@
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
 
+		//Execute the curl request
+		$http_result = curl_exec($ch);
+
 	}
 	
 
