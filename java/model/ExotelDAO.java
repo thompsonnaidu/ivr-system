@@ -81,6 +81,31 @@ public class ExotelDAO {
 
        public String sendSms(Map data){
         try{
+            //Prepare the post request parameters
+            String from = "From="+(String)data.get("From")+"&";
+            String[] toarray = (String [])data.get("To");
+            String to="";
+             for (String todata : toarray) {
+                 to +="To[]="+todata+"&"; 
+             }
+            String msg = "Body="+data.get("Body");
+           
+           String link = "https://"+EXOTEL_SID+":"+EXOTEL_TOKEN+"@twilix.exotel.in/v1/Accounts/"+EXOTEL_SID+"/Sms/send";
+           //Set the Url
+            URL url = new URL(link);            
+            //Set the parameters
+            String urlParameters = from+to+msg;
+            byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );
+            int    postDataLength = postData.length;
+            //Open a connection to the url
+            HttpURLConnection conn= (HttpURLConnection) url.openConnection();           
+            conn.setDoOutput( true );
+            //Set POST request
+            conn.setRequestMethod( "POST" );
+            conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
+            conn.setRequestProperty( "charset", "utf-8");
+            conn.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+            conn.setUseCaches( false );
             
            return "";
          }
