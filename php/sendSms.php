@@ -22,7 +22,15 @@
 		//Sample Request url  looks like https://97946:aksdsa5fsa66saf@twilix.exotel.in/v1/Accounts/97946/Sms/send
 		$url = "https://".$exotel_sid.":".$exotel_token."@twilix.exotel.in/v1/Accounts/".$exotel_sid."/Sms/send";
 
-		/
+		//set the curl request for making http request
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_VERBOSE, 1);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_FAILONERROR, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
 
 		//Execute the curl request
 		$http_result = curl_exec($ch);
