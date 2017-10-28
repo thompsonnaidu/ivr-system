@@ -48,11 +48,11 @@
 		//end of the function
 	}
 	
-
 	//usage:- To send SMS to a single receiver
 	// sendSms("1234567890","7132456780","Hey Your delivery is been sent to user");
 	//usage:- To send  Sums to more than one receiver (Bulk SMS)
 	// sendSms("1234567890", array('7468120613', '7614839520'),"Open house on Monday please be there");
 
+//usage:- To send  Sums to more than one receiver (Bulk SMS)
 	sendSms("",array("9511763048","9762417643"),"Hi Franky, your number 951764523 is now turned on.");
 ?>
