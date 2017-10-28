@@ -27,7 +27,7 @@ if ($conn->connect_error) {
 
 $sql = "select * from `incomingCall` where `registerphone` like '".$digit."' ";
 $result = $conn->query($sql);
-
+//If number of rows is greater than zero it indicates user is already registered
 if ($result->num_rows > 0) {
     // output data of each row
     header("HTTP/1.1 200 OK");
