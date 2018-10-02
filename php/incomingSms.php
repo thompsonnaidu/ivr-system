@@ -1,4 +1,5 @@
 <?php
+	// declare server address, username and password
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -38,6 +39,6 @@
 	   
 	    echo "$sql";
 	}
-
+	//close the connection
 	$conn->close();
 ?>
