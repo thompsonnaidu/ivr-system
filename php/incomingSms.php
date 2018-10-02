@@ -1,4 +1,5 @@
 <?php
+	//define server path and username 
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -31,13 +32,13 @@
 
 	//SQl query fro insertion of data
 	$sql = "INSERT INTO incomingsms(`smsSid`, `sender`, `receiver`, `date`, `body`) VALUES ('$SmsSid', '$From', '$To', $Date, '$Body')";
-
+	
 	if ($conn->query($sql) === TRUE) {
 	    echo "Hi ".$From.",Thank you for registering; Your account has been activated";
 	} else {
 	   
 	    echo "$sql";
 	}
-
+	//connection closed
 	$conn->close();
 ?>
